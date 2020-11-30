@@ -4,11 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 
@@ -17,7 +18,6 @@ import java.io.IOException;
  */
 public class ChromeTest {
 
-    private static final String GOOGLE_TEST_URL = "https://www.google.com/";
     public static final String PATH_TO_WEBDRIVER = "./lib/webdriver/chromedriver_mac";
     public static final String DEVSQUADS_URL = "https://devsquads.com/";
     private WebDriver driver;
@@ -35,14 +35,6 @@ public class ChromeTest {
     }
 
     @Test
-    public void testSearchGoogleForYoutube() throws IOException {
-        visit(GOOGLE_TEST_URL);
-        searchGoogleFor("youtube");
-        getElementByCssSelector("a[href='https://www.youtube.com/']").click();
-        getElementById("logo-red-icon-container");
-    }
-
-    @Test
     public void testDevSquadsAboutPage() throws IOException {
         visit(DEVSQUADS_URL);
         WebElement aboutTab = getElementByText("About");
@@ -57,33 +49,25 @@ public class ChromeTest {
     }
 
     private WebElement getElementByText(String text) {
-        return driver.findElement(By.xpath("//*[text() = '" + text + "']"));
+        return waitForElementToBeVisible(By.xpath("//*[text() = '" + text + "']"));
     }
 
     private WebElement getElementContains(String text) {
-        return driver.findElement(By.xpath("//*[text()[contains(.,'" + text + "')]]"));
+        return waitForElementToBeVisible(By.xpath("//*[text()[contains(.,'" + text + "')]]"));
     }
 
     private void visit(String url) {
         driver.get(url);
     }
 
-    private WebElement getElementById(String id) {
-        return driver.findElement(By.id(id));
-    }
-
-    private void searchGoogleFor(String keyword) {
-        WebElement searchBox = getElementByName("q");
-        searchBox.sendKeys(keyword);
-        searchBox.sendKeys(Keys.ENTER);
-    }
-
-    private WebElement getElementByName(String name) {
-        return driver.findElement(By.name(name));
-    }
-
     private WebElement getElementByCssSelector(String cssSelector) {
-        return driver.findElement(By.cssSelector(cssSelector));
+        return waitForElementToBeVisible(By.cssSelector(cssSelector));
+    }
+
+    private WebElement waitForElementToBeVisible(By selector) {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        return wait.until(
+                ExpectedConditions.visibilityOfElementLocated(selector));
     }
 
     @After
