@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * Created by haozuo on 3/22/16.
  */
-public class ChromeTest {
+public class DevsquadsTest {
 
     public static final String PATH_TO_WEBDRIVER = "./lib/webdriver/chromedriver_mac";
     public static final String DEVSQUADS_URL = "https://devsquads.com/";
