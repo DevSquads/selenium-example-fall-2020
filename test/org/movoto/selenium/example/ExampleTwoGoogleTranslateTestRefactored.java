@@ -9,9 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 
-public class ExampleOneGoogleTranslateTestRefactored {
+public class ExampleTwoGoogleTranslateTestRefactored {
     public static final String PATH_TO_WEBDRIVER = "./lib/webdriver/chromedriver_mac";
-    public static final String GOOGLE_URL = "https://www.google.com/";
+    public static final String GOOGLE_TRANSLATE_URL = "https://translate.google.com/";
     private WebDriver driver;
     private TestHelper testHelper;
 
@@ -26,9 +26,12 @@ public class ExampleOneGoogleTranslateTestRefactored {
 
     @Test
     public void testGoogleTranslate() throws IOException {
-        testHelper.visit(GOOGLE_URL);
-        testHelper.searchGoogleFor("translate");
-        WebElement translationTextBox = testHelper.getElementById("tw-source-text-ta");
+        testHelper.visit(GOOGLE_TRANSLATE_URL);
+        testHelper.clickOnMoreLanguagesButton();
+        testHelper.clickOnMoreLanguagesButton();
+        testHelper.clickOnOption("ar");
+        testHelper.clickOnMoreLanguagesButton();
+        WebElement translationTextBox = testHelper.getElementByClassName("er8xn");
         translationTextBox.sendKeys("software engineer");
         testHelper.getElementContains("مهندس برمجيات");
     }

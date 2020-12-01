@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 
-public class ExampleOneGoogleTranslateTest {
+public class ExampleTwoGoogleTranslateTest {
     public static final String PATH_TO_WEBDRIVER = "./lib/webdriver/chromedriver_mac";
     public static final String GOOGLE_TRANSLATE_URL = "https://translate.google.com/";
     private WebDriver driver;
@@ -36,6 +36,7 @@ public class ExampleOneGoogleTranslateTest {
         WebElement arabicLanguageOption = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[data-language-code=\"ar\"]"))
         );
+        moreLanguagesButton.click();
         arabicLanguageOption.click();
         moreLanguagesButton.click();
         WebElement translationTextBox = wait.until(

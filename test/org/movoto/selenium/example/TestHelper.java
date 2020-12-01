@@ -1,7 +1,6 @@
 package org.movoto.selenium.example;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -32,6 +31,10 @@ public class TestHelper {
         return waitForElementToBeVisible(By.cssSelector(cssSelector));
     }
 
+    public WebElement getElementByClassName(String className) {
+        return waitForElementToBeVisible(By.className(className));
+    }
+
     private WebElement waitForElementToBeVisible(By selector) {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         return wait.until(
@@ -50,9 +53,12 @@ public class TestHelper {
         return driver.findElement(By.name(name));
     }
 
-    public void searchGoogleFor(String keyword) {
-        WebElement searchBox = getElementByName("q");
-        searchBox.sendKeys(keyword);
-        searchBox.sendKeys(Keys.ENTER);
+    public void clickOnMoreLanguagesButton() {
+        WebElement moreLanguagesButton = getElementByCssSelector("button[aria-label=\"More target languages\"]");
+        moreLanguagesButton.click();
+    }
+    public void clickOnOption(String optionCode) {
+        WebElement languageOption = waitForElementToBeVisible(By.cssSelector("button[data-language-code=" + optionCode + "]"));
+        languageOption.click();
     }
 }
