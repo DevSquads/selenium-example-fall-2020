@@ -20,6 +20,10 @@ public class ExampleTwoGoogleTranslateTestRefactored {
         System.setProperty(
                 "webdriver.chrome.driver",
                 PATH_TO_WEBDRIVER);
+        // to run tests in headless mode
+        // ChromeOptions chromeOptions = new ChromeOptions();
+        // chromeOptions.addArguments("--headless");
+        // driver = new ChromeDriver(chromeOptions);
         driver = new ChromeDriver();
         testHelper = new TestHelper(driver);
     }
