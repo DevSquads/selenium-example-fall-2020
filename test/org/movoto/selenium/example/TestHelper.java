@@ -49,7 +49,7 @@ public class TestHelper {
         driver.get(url);
     }
 
-    private WebElement getElementByName(String name) {
+    public WebElement getElementByName(String name) {
         return driver.findElement(By.name(name));
     }
 
@@ -60,5 +60,9 @@ public class TestHelper {
     public void clickOnOption(String optionCode) {
         WebElement languageOption = waitForElementToBeVisible(By.cssSelector("button[data-language-code=" + optionCode + "]"));
         languageOption.click();
+    }
+
+    public WebElement getElementByXPath(String xpath) {
+        return waitForElementToBeVisible(By.xpath(xpath));
     }
 }

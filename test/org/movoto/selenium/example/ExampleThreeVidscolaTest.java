@@ -51,7 +51,9 @@ public class ExampleThreeVidscolaTest {
         WebElement courseTitle = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.className("course__title"))
         );
-        Assert.assertEquals(courseTitle.getText(), "AGILE TESTING AUTOMATION WORKSHOP");
+        String expectedText = "AGILE TESTING AUTOMATION WORKSHOP";
+        String actualText = courseTitle.getText();
+        Assert.assertEquals(expectedText, actualText);
     }
 
     @After
