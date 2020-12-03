@@ -36,11 +36,15 @@ public class ExampleTwoGoogleTranslateTest {
         WebElement moreLanguagesButton = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[aria-label=\"More target languages\"]"))
         );
+        WebElement autoDetectLanguageButton = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector("button[data-language-code=\"auto\"]"))
+        );
+        autoDetectLanguageButton.click();
         moreLanguagesButton.click();
         WebElement arabicLanguageOption = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[data-language-code=\"ar\"]"))
         );
-        moreLanguagesButton.click();
         arabicLanguageOption.click();
         moreLanguagesButton.click();
         WebElement translationTextBox = wait.until(

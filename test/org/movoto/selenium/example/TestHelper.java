@@ -65,4 +65,9 @@ public class TestHelper {
     public WebElement getElementByXPath(String xpath) {
         return waitForElementToBeVisible(By.xpath(xpath));
     }
+
+    public void clickOnAutoDetectLanguageButton() {
+        WebElement autoDetectLanguageOption = getElementByCssSelector("button[data-language-code=\"auto\"]");
+        autoDetectLanguageOption.click();
+    }
 }

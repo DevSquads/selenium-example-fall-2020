@@ -32,7 +32,7 @@ public class ExampleTwoGoogleTranslateTestRefactored {
     public void testGoogleTranslate() throws IOException {
         testHelper.visit(GOOGLE_TRANSLATE_URL);
         testHelper.clickOnMoreLanguagesButton();
-        testHelper.clickOnMoreLanguagesButton();
+        testHelper.clickOnAutoDetectLanguageButton();
         testHelper.clickOnOption("ar");
         testHelper.clickOnMoreLanguagesButton();
         WebElement translationTextBox = testHelper.getElementByClassName("er8xn");
